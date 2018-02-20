@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="EAD_NguyenHoangAnh_Total:ejb exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/EAD_NguyenHoangAnh_Total_ejb_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="EAD_NguyenHoangAnh_Total/ejb/EJB" />
+      <element id="module-output" name="EAD_NguyenHoangAnh_Total" />
+      <element id="jpa-descriptors" facet="EAD_NguyenHoangAnh_Total/jpa/JPA" />
+    </root>
+  </artifact>
+</component>
