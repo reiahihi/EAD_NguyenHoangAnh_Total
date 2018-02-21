@@ -22,7 +22,7 @@
 </head>
 <body>
 <h1>Create new product</h1>
-<form action="CreateServlet" method="post">
+<form action="CreateServlet" method="post" enctype="multipart/form-data">
     ID: <input type="text" id="id" name="id"  ><br>
     Name: <input type="text" id="name" name="name"><br>
     Image: <input type="text" id="image" name="image"><br>

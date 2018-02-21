@@ -16,7 +16,7 @@ public class ManufacturersSessionBean extends AbstractFacade<Manufacturers>
     private EntityManager em;
 
     @Override
-    public Manufacturers findEntity(String id)
+    public Manufacturers findEntity(Object id)
     {
         return super.findEntity(id);
     }
@@ -30,6 +30,8 @@ public class ManufacturersSessionBean extends AbstractFacade<Manufacturers>
     public ManufacturersSessionBean()
     {
     }
+
+
 
     @Override
     protected Class getClassName()

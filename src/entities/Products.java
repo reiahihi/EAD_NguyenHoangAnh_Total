@@ -135,8 +135,8 @@ public class Products
         return result;
     }
 
-    @ManyToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name = "manufacturer_id", referencedColumnName = "manufacturer_id" , nullable = false , insertable = false,  updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id", referencedColumnName = "manufacturer_id", nullable = false, insertable = false, updatable = false)
     public Manufacturers getManufacturersByManufacturerId()
     {
         return manufacturersByManufacturerId;

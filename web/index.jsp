@@ -40,7 +40,7 @@
         <tr>
             <td>${e.productId}</td>
             <td>${e.productName}</td>
-            <td><img src="resources/images/${e.productImage}" alt="${e.productImage}" height="80px"></td>
+            <td><img src="uploadDir/${e.productImage}" alt="${e.productImage}" height="80px"></td>
             <td>${e.productPrice}</td>
             <td>${e.productDetail}</td>
             <td>${e.manufacturersByManufacturerId.manufacturerName} </td>
@@ -53,6 +53,12 @@
 
     </tbody>
 </table>
+<h2>
+    <c:forEach begin="1" end="${pages}" var="p">
+        <a href="ListServlet?page=${p}">${p}</a>
+    </c:forEach>
+
+</h2>
 <h3><a href="CreateServlet">Create new product</a></h3>
 </body>
 </html>

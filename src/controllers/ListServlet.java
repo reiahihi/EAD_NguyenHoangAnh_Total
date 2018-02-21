@@ -3,7 +3,7 @@ package controllers;// ****************************************** **************
 // *****************************    ********* Phone: 0966 941 840
 // ********************************    ****** Email: 
 // ****************************************** ************************************
-// *****       ********       ******    ***** Package: "${PACKAGE_NAME}"
+// *****       ********       ******    ***** Package: controllers
 // *****        ******        ******    ***** Project: untitled27
 // *****    *    ****    *    ******    ***** Date: 06-Feb-18
 // *****    **    **    **    ******    ***** Time: 15:47
@@ -14,6 +14,8 @@ package controllers;// ****************************************** **************
 
 
 import entities.Manufacturers;
+import entities.Products;
+import reponsitory.Pager;
 import sb.ManufacturersSessionBean;
 import sb.ProductsSessionBean;
 
@@ -24,6 +26,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ListServlet", urlPatterns = {"/ListServlet"})
 public class ListServlet extends HttpServlet
@@ -40,8 +43,23 @@ public class ListServlet extends HttpServlet
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        request.setAttribute("list", productsSessionBean.findAll());
+        Pager p = new Pager();
+        p.setList(productsSessionBean.findAll());
 
+        String pageNumber = request.getParameter("page");
+        if (pageNumber == null)
+        {
+            p.setCurrentPage(1);
+        }
+        else
+        {
+            p.setCurrentPage(Integer.parseInt(pageNumber));
+        }
+//        System.out.println(p.getCurrentPage() + "a");
+//        System.out.println(p.getCountPage() + "b");
+
+        request.setAttribute("list", p.getPageList());
+        request.setAttribute("pages" , p.getCountPage());
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

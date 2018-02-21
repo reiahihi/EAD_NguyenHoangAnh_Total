@@ -28,7 +28,6 @@ abstract class AbstractFacade<T>
 
     protected abstract EntityManager getEntityManager();
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public List<T> findAll()
     {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
@@ -37,7 +36,7 @@ abstract class AbstractFacade<T>
         return q.getResultList();
     }
 
-    public T findEntity(String id)
+    public T findEntity(Object id)
     {
         return (T) getEntityManager().find(getClassName(), id);
     }
@@ -47,7 +46,6 @@ abstract class AbstractFacade<T>
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void create(T entity)
     {
         getEntityManager().persist(entity);
@@ -60,4 +58,11 @@ abstract class AbstractFacade<T>
         getEntityManager().merge(entity);
     }
 
+    public List<Object[]> runQuery (String query )
+    {
+//        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        Query q = getEntityManager().createQuery(query);
+        List<Object[]> temp = q.getResultList();
+        return temp;
+    }
 }

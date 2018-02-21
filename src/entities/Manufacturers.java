@@ -72,7 +72,7 @@ public class Manufacturers
         return result;
     }
 
-    @OneToMany(mappedBy = "manufacturersByManufacturerId" , fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "manufacturersByManufacturerId" )
     public Collection<Products> getProductsByManufacturerId()
     {
         return productsByManufacturerId;

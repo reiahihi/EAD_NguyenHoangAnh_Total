@@ -3,6 +3,7 @@ package sb;
 import entities.Manufacturers;
 import entities.Products;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,7 +26,14 @@ public class ProductsSessionBean extends AbstractFacade<Products>
     @Override
     public void create(Products entity)
     {
+
         super.create(entity);
+    }
+
+    @Override
+    public List<Object[]> runQuery(String query)
+    {
+        return super.runQuery(query);
     }
 
     @Override
@@ -47,7 +55,7 @@ public class ProductsSessionBean extends AbstractFacade<Products>
     }
 
     @Override
-    public Products findEntity(String id)
+    public Products findEntity(Object id)
     {
         return super.findEntity(id);
     }
