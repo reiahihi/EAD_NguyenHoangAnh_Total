@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ListServlet", urlPatterns = {"/ListServlet"})
@@ -36,6 +37,8 @@ public class ListServlet extends HttpServlet
     @EJB
     private ManufacturersSessionBean manufacturersSessionBean;
 
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 
@@ -43,23 +46,8 @@ public class ListServlet extends HttpServlet
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        Pager p = new Pager();
-        p.setList(productsSessionBean.findAll());
 
-        String pageNumber = request.getParameter("page");
-        if (pageNumber == null)
-        {
-            p.setCurrentPage(1);
-        }
-        else
-        {
-            p.setCurrentPage(Integer.parseInt(pageNumber));
-        }
-//        System.out.println(p.getCurrentPage() + "a");
-//        System.out.println(p.getCountPage() + "b");
-
-        request.setAttribute("list", p.getPageList());
-        request.setAttribute("pages" , p.getCountPage());
+        request.setAttribute("list",  productsSessionBean.findAll());
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

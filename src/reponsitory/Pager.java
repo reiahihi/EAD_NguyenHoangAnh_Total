@@ -14,19 +14,21 @@ package reponsitory;
 // *****    **************    ******    ***** Created by IntelliJ IDEA.
 // ****************************************** ************************************
 
+import entities.Products;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pager
 {
     private int limit = 4;
-    private List list = new ArrayList();
+    private List<Products> list = new ArrayList();
     private int countPage;
     private int currentPage;
-    private List pageList = new ArrayList();
+    private List<Products> pageList = new ArrayList();
 
 
-    public List getPageList()
+    public List<Products> getPageList()
     {
         int end = list.size() % limit;
         if (getCountPage() == getCurrentPage())
@@ -40,7 +42,7 @@ public class Pager
         return pageList;
     }
 
-    public void setPageList(List pageList)
+    public void setPageList(List<Products> pageList)
     {
         this.pageList = pageList;
     }
@@ -70,12 +72,12 @@ public class Pager
         this.countPage = countPage;
     }
 
-    public List getList()
+    public List<Products> getList()
     {
         return list;
     }
 
-    public void setList(List temp)
+    public void setList(List<Products> temp)
     {
         this.list = temp;
     }
